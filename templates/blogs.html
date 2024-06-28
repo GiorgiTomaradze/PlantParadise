@@ -1,0 +1,31 @@
+{%  extends "base.html" %}
+
+{% block content%}
+<section class="container mt-4">
+    <h2 class="section-title">Blogs</h2>
+    <div class="row justify-content-center">
+      {% for blog in blogs %}
+      <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <div class="card">
+            {% if blog['image_url'] %}
+                <img src="{{ blog['image_url'] }}" class="card-img-top" alt="{{ blog['title'] }}">
+            {% else %}
+                <img src="../static/images/1.png" class="card-img-top" alt="{{ blog['title'] }}">
+            {% endif %}
+          <div class="card-body">
+          <h5 class="card-title">{{ blog['name'] }}</h5>
+          <p class="card-text cut-text" >{{ blog['text'] }}</p>
+          <a href="/blog/{{ blog['id'] }}" class="btn btn-primary">Read More</a>
+          <br><br>
+          {%if current_user.role == 'admin'%}
+          <a href="/delete_blog/{{ blog['id'] }}" class="btn btn-primary">Delete</a>
+          <br><br>
+          <a href="/edit_blog/{{ blog['id'] }}" class="btn btn-primary">Edit</a>
+          {%endif%}
+          </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+    </section>
+{% endblock %}

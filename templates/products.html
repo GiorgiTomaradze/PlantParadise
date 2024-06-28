@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block content%}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for product in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                <img  src="{{ product['image_url'] }}" class="card-img-top" alt="{{ product['name'] }}">
+                <div class="card-body">
+                <h5 class="card-title">{{ product['name'] }}</h5>
+                <p class="card-text cut-text">{{ product['text'] }}</p>
+                <a href="/product/{{ product['id'] }}" class="btn btn-primary">Shop Now</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{%endblock%}

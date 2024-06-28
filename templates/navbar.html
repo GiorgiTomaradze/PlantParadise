@@ -1,0 +1,72 @@
+<header>
+    <a href="/">
+        <img class="header-img" src="../static/images/1.png" />
+    </a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_ul">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogs">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">about</a>
+                    </li>
+                    <li class="nav-item">
+                        <a>
+                            <div class="dropdown">
+                                <button class="dropbts nav-link">Categories</button>
+                                <div class="dropdown-content">
+                                    <a href="/products/1">Indor palnts</a>
+                                    <a href="/products/2">Outdor plants </a>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {%if current_user.role == 'admin'%}
+                    <li class="nav-item">
+                        <a>
+                            <div class="dropdown" style="margin-left:900px;">
+                                <button class="dropbtn">POST</button>
+                                <div class="dropdown-content">
+                                    <a href="/add_product">Add product</a>
+                                    <a href="/add_blog">Add blog </a>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {%endif%}
+                </ul>
+                <li class="nav-item dropdown" style="margin-right: 28px;">
+                    <button class="btn btn-secondary dropdown-toggle custom-drop" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../static/images/user_logo.svg" style="margin-left: 16px; width: 40px;height: auto;"
+                            alt="">
+                    </button> 
+                    <ul class="dropdown-menu">
+
+                        {% if current_user.is_authenticated %}
+                        <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                        {%else %}
+                        <li><a class="dropdown-item" href="/login">Log In</a></li>
+                        <li><a class="dropdown-item" href="/singup">Sign Up</a></li>
+                        {%endif%}
+                    </ul>
+                </li>
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" id="searchInput" type="search" placeholder="Product Name"
+                           aria-label="Search">
+                    <button class="btn btn-primary" id="searchButton" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
