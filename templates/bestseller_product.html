@@ -2,7 +2,7 @@
 
 <section class="container mt-4" style="margin-bottom: 40px;">
   <h2 class="section-title">Bestseller Products</h2>
-  <div class="swiper mySwiper">
+  <div class="swiper mySwiper" style="padding-bottom: 8px;">
     <div class="swiper-wrapper">
       {% for product in products %}
       <div class="swiper-slide">
@@ -35,7 +35,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 5,
     spaceBetween: 16,
     loop: true,
     pagination: {
@@ -46,6 +45,17 @@
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    breakpoints: {
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1400: {
+          slidesPerView: 5,
+        },
+      },
   });
 </script>
 
