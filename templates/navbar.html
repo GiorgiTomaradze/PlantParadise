@@ -9,27 +9,25 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_ul">
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link {% if active_page == 'home' %}active{% endif %}" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/products">Products</a>
+                        <a class="nav-link {% if active_page == 'products' %}active{% endif %}" href="/products">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/blogs">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">about</a>
+                        <a class="nav-link {% if active_page == 'about' %}active{% endif %}" href="/about">about</a>
                     </li>
                     <li class="nav-item">
-                        <a>
-                            <div class="dropdown">
-                                <button class="dropbts nav-link">Categories</button>
-                                <div class="dropdown-content">
-                                    <a href="/products/1">Indor palnts</a>
-                                    <a href="/products/2">Outdor plants </a>
-                                </div>
+                        <div class="dropdown">
+                            <button class="nav-link">Categories</button>
+                            <div class="dropdown-content">
+                                <a href="/products/1">Indor palnts</a>
+                                <a href="/products/2">Outdor plants </a>
                             </div>
-                        </a>
+                        </div>
                     </li>
                     {%if current_user.role == 'admin'%}
                     <li class="nav-item">
@@ -70,3 +68,10 @@
         </div>
     </nav>
 </header>
+
+<style>
+    .active {
+        color: #4b8040 !important;
+        font-weight: bold;
+    }
+</style>

@@ -10,11 +10,11 @@ from flask_login import login_user,logout_user,login_required,current_user
 @app.route("/")
 def home():
     role = "user"
-    return render_template("index.html", products=Product.query.all(), role=role)
+    return render_template("index.html", products=Product.query.all(), role=role, active_page='home')
 
 @app.route("/about")
 def about():
-    return render_template("about.html", products=Product.query.all(),)
+    return render_template("about.html", products=Product.query.all(), active_page='about')
 
 @app.route("/products/<int:category_id>")
 @app.route("/products")

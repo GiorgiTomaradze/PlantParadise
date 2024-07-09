@@ -1,24 +1,85 @@
-<section class="container mt-4">
-    <h2 class="section-title">Bestseller Products</h2>
-    <div class="row justify-content-center">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="container mt-4" style="margin-bottom: 40px;">
+  <h2 class="section-title">Bestseller Products</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
       {% for product in products %}
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-          <div class="card">
+      <div class="swiper-slide">
+        <div class="card">
           <img src="{{ product['image_url'] }}" class="card-img-top" alt="{{ product['name'] }}">
           <div class="card-body">
-          <h5 class="card-title">{{ product['name'] }}</h5>
-          <p class="card-text cut-text">{{ product['text'] }}</p>
-          <a href="/product/{{ product['id'] }}" class="btn btn-primary">Shop Now</a>
-          {%if current_user.role == 'admin'%}
-          <br><br>
-          <a href="/delete_product/{{ product['id'] }}" class="btn btn-primary">Delete</a>
-          <br>
-          <br>
-          <a href="/edit_product/{{ product['id'] }}" class="btn btn-primary">Edit</a>
-          {%endif%}
+            <h5 class="card-title">{{ product['name'] }}</h5>
+            <p class="card-text cut-text">{{ product['text'] }}</p>
+            <a href="/product/{{ product['id'] }}" class="btn btn-primary">Shop Now</a>
+            {%if current_user.role == 'admin'%}
+            <br><br>
+            <a href="/delete_product/{{ product['id'] }}" class="btn btn-primary">Delete</a>
+            <br>
+            <br>
+            <a href="/edit_product/{{ product['id'] }}" class="btn btn-primary">Edit</a>
+            {%endif%}
           </div>
-          </div>
+        </div>
       </div>
       {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
-    </section>
+
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 5,
+    spaceBetween: 16,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #4b8040;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 35px;
+  }
+
+ 
+</style>
