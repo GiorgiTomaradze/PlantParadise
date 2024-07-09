@@ -23,11 +23,11 @@ def products(category_id =None):
         products = Category.query.get(category_id).products
     else:
         products=Product.query.all()
-    return render_template("products.html",products=products)
+    return render_template("products.html",products=products, active_page='products')
 
 @app.route("/blogs")
 def blogs():
-    return render_template("blogs.html", blogs=Blog.query.all())
+    return render_template("blogs.html", blogs=Blog.query.all(),active_page='blogs')
 
 @app.route("/product/<int:product_id>")
 def product(product_id):
